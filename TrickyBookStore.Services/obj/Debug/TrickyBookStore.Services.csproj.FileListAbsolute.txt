@@ -7,7 +7,3 @@ C:\Users\phli\OneDrive\Documents\Precio\Training-Clean code\TrickyBookStore\Tric
 C:\Users\phli\OneDrive\Documents\Precio\Training-Clean code\TrickyBookStore\TrickyBookStore.Services\obj\Debug\TrickyBookStore.Services.csproj.CopyComplete
 C:\Users\phli\OneDrive\Documents\Precio\Training-Clean code\TrickyBookStore\TrickyBookStore.Services\obj\Debug\TrickyBookStore.Services.dll
 C:\Users\phli\OneDrive\Documents\Precio\Training-Clean code\TrickyBookStore\TrickyBookStore.Services\obj\Debug\TrickyBookStore.Services.pdb
-C:\Users\quli\Downloads\CleanCode\TrickyBookStore\TrickyBookStore.Services\obj\Debug\TrickyBookStore.Services.csproj.AssemblyReference.cache
-C:\Users\quli\Downloads\CleanCode\TrickyBookStore\TrickyBookStore.Services\obj\Debug\TrickyBookStore.Services.csproj.CoreCompileInputs.cache
-C:\Users\quli\Downloads\CleanCode\TrickyBookStore\TrickyBookStore.Services\obj\Debug\TrickyBookStore.Services.dll
-C:\Users\quli\Downloads\CleanCode\TrickyBookStore\TrickyBookStore.Services\obj\Debug\TrickyBookStore.Services.pdb
