@@ -8,10 +8,10 @@ namespace TrickyBookStore.Services.Payment
 {
     internal class PaymentService : IPaymentService
     {
-        ICustomerService CustomerService { get; }
-        IPurchaseTransactionService PurchaseTransactionService { get; }
+        private ICustomerService CustomerService { get; }
+        private IPurchaseTransactionService PurchaseTransactionService { get; }
 
-        public PaymentService(ICustomerService customerService, 
+        public PaymentService(ICustomerService customerService,
             IPurchaseTransactionService purchaseTransactionService)
         {
             CustomerService = customerService;

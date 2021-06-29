@@ -11,4 +11,8 @@
     <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="5.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\TrickyBookStore.Services\TrickyBookStore.Services.csproj" />
+  </ItemGroup>
+
 </Project>

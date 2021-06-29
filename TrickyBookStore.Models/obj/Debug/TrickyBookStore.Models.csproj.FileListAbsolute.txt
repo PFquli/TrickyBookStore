@@ -4,3 +4,9 @@ C:\Users\phli\OneDrive\Documents\Precio\Training-Clean code\TrickyBookStore\Tric
 C:\Users\phli\OneDrive\Documents\Precio\Training-Clean code\TrickyBookStore\TrickyBookStore.Models\obj\Debug\TrickyBookStore.Models.csproj.CoreCompileInputs.cache
 C:\Users\phli\OneDrive\Documents\Precio\Training-Clean code\TrickyBookStore\TrickyBookStore.Models\obj\Debug\TrickyBookStore.Models.dll
 C:\Users\phli\OneDrive\Documents\Precio\Training-Clean code\TrickyBookStore\TrickyBookStore.Models\obj\Debug\TrickyBookStore.Models.pdb
+C:\Users\quli\Downloads\CleanCode\TrickyBookStore\TrickyBookStore.Models\bin\Debug\TrickyBookStore.Models.dll
+C:\Users\quli\Downloads\CleanCode\TrickyBookStore\TrickyBookStore.Models\bin\Debug\TrickyBookStore.Models.pdb
+C:\Users\quli\Downloads\CleanCode\TrickyBookStore\TrickyBookStore.Models\obj\Debug\TrickyBookStore.Models.csproj.AssemblyReference.cache
+C:\Users\quli\Downloads\CleanCode\TrickyBookStore\TrickyBookStore.Models\obj\Debug\TrickyBookStore.Models.csproj.CoreCompileInputs.cache
+C:\Users\quli\Downloads\CleanCode\TrickyBookStore\TrickyBookStore.Models\obj\Debug\TrickyBookStore.Models.dll
+C:\Users\quli\Downloads\CleanCode\TrickyBookStore\TrickyBookStore.Models\obj\Debug\TrickyBookStore.Models.pdb

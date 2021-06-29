@@ -1,6 +1,8 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using System;
+using TrickyBookStore.Application.Controller;
+using TrickyBookStore.Services.Books;
 
 namespace TrickyBookStore.Application
 {
@@ -12,11 +14,19 @@ namespace TrickyBookStore.Application
             var serviceProvider = (ServiceProvider)new ServiceCollection()
                 .AddLogging()
                 //Add services in between
+                .AddScoped<IPayment, Payment>()
+                .AddScoped<IBookService, BookService>()
                 .BuildServiceProvider();
 
             //configure console logging
             var loggerFactoryService = serviceProvider.GetService<ILoggerFactory>();
             loggerFactoryService = LoggerFactory.Create(builder => builder.AddConsole());
+
+            // Writeline debug
+            var books = serviceProvider.GetService<IBookService>();
+            var listOfBooks = books.GetBooks();
+            Console.WriteLine("Bellow is a list of books");
+            Console.WriteLine(listOfBooks[0].Price);
 
             var logger = loggerFactoryService
                 .CreateLogger<Program>();
