@@ -7,7 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrickyBookStore.Services", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrickyBookStore.Models", "TrickyBookStore.Models\TrickyBookStore.Models.csproj", "{1E53ED33-356D-43D9-9120-D233719B9813}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrickyBookStore.Application", "TrickyBookStore.Application\TrickyBookStore.Application.csproj", "{78F2AD35-6F6A-44A9-B1A7-79CE9C769D9E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrickyBookStore.Application", "TrickyBookStore.Application\TrickyBookStore.Application.csproj", "{78F2AD35-6F6A-44A9-B1A7-79CE9C769D9E}"
+	ProjectSection(ProjectDependencies) = postProject
+		{7D2A0586-B58C-4034-88FF-2449BA26FBBA} = {7D2A0586-B58C-4034-88FF-2449BA26FBBA}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -8,6 +8,6 @@ namespace TrickyBookStore.Application.Controller
 {
     internal interface IPayment
     {
-        long GetPaymentOnAMonthForUser(int year, int month, int customerId);
+        double GetCustomerBillForSpecificMonth(int year, int month, long customerId);
     }
 }

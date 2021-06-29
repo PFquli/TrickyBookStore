@@ -206,6 +206,27 @@
         "runtime": {
           "lib/netcoreapp2.0/System.Runtime.CompilerServices.Unsafe.dll": {}
         }
+      },
+      "TrickyBookStore.Models/1.0.0": {
+        "type": "project",
+        "compile": {
+          "bin/placeholder/TrickyBookStore.Models.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/TrickyBookStore.Models.dll": {}
+        }
+      },
+      "TrickyBookStore.Services/1.0.0": {
+        "type": "project",
+        "dependencies": {
+          "TrickyBookStore.Models": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/TrickyBookStore.Services.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/TrickyBookStore.Services.dll": {}
+        }
       }
     }
   },
@@ -577,13 +598,24 @@
         "system.runtime.compilerservices.unsafe.6.0.0-preview.5.21301.5.nupkg.sha512",
         "system.runtime.compilerservices.unsafe.nuspec"
       ]
+    },
+    "TrickyBookStore.Models/1.0.0": {
+      "type": "project",
+      "path": "../TrickyBookStore.Models/TrickyBookStore.Models.csproj",
+      "msbuildProject": "../TrickyBookStore.Models/TrickyBookStore.Models.csproj"
+    },
+    "TrickyBookStore.Services/1.0.0": {
+      "type": "project",
+      "path": "../TrickyBookStore.Services/TrickyBookStore.Services.csproj",
+      "msbuildProject": "../TrickyBookStore.Services/TrickyBookStore.Services.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net5.0": [
       "Microsoft.Extensions.DependencyInjection >= 6.0.0-preview.5.21301.5",
       "Microsoft.Extensions.Logging >= 6.0.0-preview.5.21301.5",
-      "Microsoft.Extensions.Logging.Console >= 5.0.0"
+      "Microsoft.Extensions.Logging.Console >= 5.0.0",
+      "TrickyBookStore.Services >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -612,7 +644,11 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\quli\\Downloads\\CleanCode\\TrickyBookStore\\TrickyBookStore.Services\\TrickyBookStore.Services.csproj": {
+              "projectPath": "C:\\Users\\quli\\Downloads\\CleanCode\\TrickyBookStore\\TrickyBookStore.Services\\TrickyBookStore.Services.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

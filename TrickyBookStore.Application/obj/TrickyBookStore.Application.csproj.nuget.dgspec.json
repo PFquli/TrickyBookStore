@@ -27,7 +27,11 @@
         "frameworks": {
           "net5.0": {
             "targetAlias": "net5.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\Users\\quli\\Downloads\\CleanCode\\TrickyBookStore\\TrickyBookStore.Services\\TrickyBookStore.Services.csproj": {
+                "projectPath": "C:\\Users\\quli\\Downloads\\CleanCode\\TrickyBookStore\\TrickyBookStore.Services\\TrickyBookStore.Services.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
@@ -70,6 +74,35 @@
           },
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.301\\RuntimeIdentifierGraph.json"
         }
+      }
+    },
+    "C:\\Users\\quli\\Downloads\\CleanCode\\TrickyBookStore\\TrickyBookStore.Models\\TrickyBookStore.Models.csproj": {
+      "restore": {
+        "projectUniqueName": "C:\\Users\\quli\\Downloads\\CleanCode\\TrickyBookStore\\TrickyBookStore.Models\\TrickyBookStore.Models.csproj",
+        "projectName": "TrickyBookStore.Models",
+        "projectPath": "C:\\Users\\quli\\Downloads\\CleanCode\\TrickyBookStore\\TrickyBookStore.Models\\TrickyBookStore.Models.csproj"
+      },
+      "frameworks": {
+        "net461": {}
+      }
+    },
+    "C:\\Users\\quli\\Downloads\\CleanCode\\TrickyBookStore\\TrickyBookStore.Services\\TrickyBookStore.Services.csproj": {
+      "restore": {
+        "projectUniqueName": "C:\\Users\\quli\\Downloads\\CleanCode\\TrickyBookStore\\TrickyBookStore.Services\\TrickyBookStore.Services.csproj",
+        "projectName": "TrickyBookStore.Services",
+        "projectPath": "C:\\Users\\quli\\Downloads\\CleanCode\\TrickyBookStore\\TrickyBookStore.Services\\TrickyBookStore.Services.csproj",
+        "frameworks": {
+          "net461": {
+            "projectReferences": {
+              "C:\\Users\\quli\\Downloads\\CleanCode\\TrickyBookStore\\TrickyBookStore.Models\\TrickyBookStore.Models.csproj": {
+                "projectPath": "C:\\Users\\quli\\Downloads\\CleanCode\\TrickyBookStore\\TrickyBookStore.Models\\TrickyBookStore.Models.csproj"
+              }
+            }
+          }
+        }
+      },
+      "frameworks": {
+        "net461": {}
       }
     }
   }
