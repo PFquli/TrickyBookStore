@@ -10,33 +10,37 @@ namespace TrickyBookStore.Services.Store
             {
                 SubscriptionTypes.Premium, new Dictionary<string, double>
                 {
-                    { "ReadPrice", 0 },
-                    { "DiscountPrice", 85 },
-                    { "MaximumDiscountedItems", 3 }
+                    { "ReadRate", 0 },
+                    { "DiscountRate", 85 },
+                    { "MaximumDiscountedItems", 3 },
+                    { "SubscriptionPrice", 200 }
                 }
             },
             {
                 SubscriptionTypes.CategoryAddicted, new Dictionary<string, double>
                 {
-                    { "ReadPrice", 0 },
-                    { "DiscountPrice", 85 },
-                    { "MaximumDiscountedItems", 3 }
+                    { "ReadRate", 0 },
+                    { "DiscountRate", 85 },
+                    { "MaximumDiscountedItems", 3 },
+                    { "SubscriptionPrice", 75 }
                 }
             },
             {
                 SubscriptionTypes.Paid, new Dictionary<string, double>
                 {
-                    { "ReadPrice", 5 },
-                    { "DiscountPrice", 95 },
-                    { "MaximumDiscountedItems", 3 }
+                    { "ReadRate", 5 },
+                    { "DiscountRate", 95 },
+                    { "MaximumDiscountedItems", 3 },
+                    { "SubscriptionPrice", 50 }
                 }
             },
             {
                 SubscriptionTypes.Free, new Dictionary<string, double>
                 {
-                    { "ReadPrice", 90 },
-                    { "DiscountPrice", 100 },
-                    { "MaximumDiscountedItems", 0 }
+                    { "ReadRate", 90 },
+                    { "DiscountRate", 100 },
+                    { "MaximumDiscountedItems", 0 },
+                    { "SubscriptionPrice", 0 }
                 }
             }
         };
