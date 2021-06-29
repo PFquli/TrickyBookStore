@@ -18,7 +18,7 @@ namespace TrickyBookStore.Services.Books
         private bool CheckIfThisBookIncluded(Book book, long[] ids)
         {
             int includedBookIndex = Array.IndexOf(ids, book.Id);
-            return includedBookIndex > 0;
+            return includedBookIndex > -1;
         }
 
         public IList<Book> GetBooks(params long[] ids)
