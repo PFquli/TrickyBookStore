@@ -11,25 +11,23 @@ namespace TrickyBookStore.Services.PurchaseTransactions
     {
         private IBookService BookService { get; }
 
-        private readonly List<PurchaseTransaction> _purchaseTransactions;
-
         public PurchaseTransactionService(IBookService bookService)
         {
             BookService = bookService;
-            _purchaseTransactions = Store.PurchaseTransactions.Data.ToList();
         }
 
         private bool CheckIfTransactionIncluded(PurchaseTransaction pcTrans, long customerId, DateTimeOffset fromDate, DateTimeOffset toDate)
         {
-            bool isRightCustomer = SharedService.CheckIsRightCustomer(pcTrans.CustomerId, customerId);
-            bool isRightDate = SharedService.CheckIsFromDate(pcTrans.CreatedDate, fromDate) && SharedService.CheckIsToDate(pcTrans.CreatedDate, toDate);
+            bool isRightCustomer = pcTrans.CustomerId == customerId;
+            bool isRightDate = Utils.CheckIsFromDate(pcTrans.CreatedDate, fromDate) && Utils.CheckIsToDate(pcTrans.CreatedDate, toDate);
             return isRightCustomer && isRightDate;
         }
 
         public IList<PurchaseTransaction> GetPurchaseTransactions(long customerId, DateTimeOffset fromDate, DateTimeOffset toDate)
         {
             List<PurchaseTransaction> purchaseTransactionList = new List<PurchaseTransaction>();
-            foreach (PurchaseTransaction pcTrans in _purchaseTransactions)
+            List<PurchaseTransaction> purchaseTransactionsData = Store.PurchaseTransactions.Data.ToList();
+            foreach (PurchaseTransaction pcTrans in purchaseTransactionsData)
             {
                 if (CheckIfTransactionIncluded(pcTrans, customerId, fromDate, toDate))
                 {

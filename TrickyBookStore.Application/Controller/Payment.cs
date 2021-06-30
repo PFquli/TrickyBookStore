@@ -63,5 +63,11 @@ namespace TrickyBookStore.Application.Controller
             double paymentAmount = paymentService.GetPaymentAmount(customerId, fromDate, toDate);
             return paymentAmount;
         }
+
+        public void StartProgram()
+        {
+            // Todo: setup UI here
+            // Writeline, Readline, call GetCustomerBillForSpecificMonth and return result
+        }
     }
 }

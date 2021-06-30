@@ -14,15 +14,15 @@ namespace TrickyBookStore.Application
             var serviceProvider = (ServiceProvider)new ServiceCollection()
                 .AddLogging()
                 //Add services in between
+                .AddTrickyBookStoreServices()
                 .AddScoped<IPayment, Payment>()
-                .AddScoped<IBookService, BookService>()
                 .BuildServiceProvider();
 
             //configure console logging
             var loggerFactoryService = serviceProvider.GetService<ILoggerFactory>();
             loggerFactoryService = LoggerFactory.Create(builder => builder.AddConsole());
 
-            // Writeline debug
+            // Writeline debug, move to Payment.StartProgram later
             var books = serviceProvider.GetService<IBookService>();
             var listOfBooks = books.GetBooks();
             Console.WriteLine("Bellow is a list of books");

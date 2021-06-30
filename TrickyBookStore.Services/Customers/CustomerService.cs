@@ -10,17 +10,15 @@ namespace TrickyBookStore.Services.Customers
     {
         private ISubscriptionService SubscriptionService { get; }
 
-        private readonly List<Customer> _customers;
-
         public CustomerService(ISubscriptionService subscriptionService)
         {
             SubscriptionService = subscriptionService;
-            _customers = Store.Customers.Data.ToList();
         }
 
         public Customer GetCustomerById(long id)
         {
-            Customer customer = _customers.FirstOrDefault(ctm => ctm.Id == id);
+            List<Customer> customersData = Store.Customers.Data.ToList();
+            Customer customer = customersData.FirstOrDefault(ctm => ctm.Id == id);
             return customer;
         }
     }

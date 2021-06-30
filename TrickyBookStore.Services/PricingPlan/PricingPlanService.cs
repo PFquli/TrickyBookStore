@@ -28,6 +28,12 @@ namespace TrickyBookStore.Services.PricingPlan
             _categoryReadRate = GetCategoryAddictedReadRate();
         }
 
+        public List<int> GetUniqueCategoryIds(params int[] ids)
+        {
+            List<Subscription> subscriptions = Subscription.GetSubscriptions(ids).ToList();
+            return Subscription.GetUniqueCategoryIdsFromSubscriptions(subscriptions).ToList();
+        }
+
         public double GetCategoryAddictedReadRate()
         {
             return Subscription.GetReadRateForSubscriptionType(SubscriptionTypes.CategoryAddicted);

@@ -7,11 +7,8 @@ namespace TrickyBookStore.Services.Subscriptions
 {
     internal class SubscriptionService : ISubscriptionService
     {
-        private readonly List<Subscription> _subscriptions;
-
         public SubscriptionService()
         {
-            _subscriptions = Store.Subscriptions.Data.ToList();
         }
 
         private bool CheckIfThisSubscriptionIncluded(Subscription subscription, int[] ids)
@@ -23,7 +20,8 @@ namespace TrickyBookStore.Services.Subscriptions
         public IList<Subscription> GetSubscriptions(params int[] ids)
         {
             List<Subscription> subscriptionList = new List<Subscription>();
-            foreach (Subscription sub in _subscriptions)
+            List<Subscription> subscriptionsData = Store.Subscriptions.Data.ToList();
+            foreach (Subscription sub in subscriptionsData)
             {
                 if (CheckIfThisSubscriptionIncluded(sub, ids))
                 {

@@ -8,11 +8,8 @@ namespace TrickyBookStore.Services.Books
 {
     public class BookService : IBookService
     {
-        private readonly IList<Book> _books;
-
         public BookService()
         {
-            _books = Store.Books.Data.ToList();
         }
 
         private bool CheckIfThisBookIncluded(Book book, long[] ids)
@@ -24,7 +21,8 @@ namespace TrickyBookStore.Services.Books
         public IList<Book> GetBooks(params long[] ids)
         {
             List<Book> bookList = new List<Book>();
-            foreach (Book book in _books)
+            List<Book> booksData = Store.Books.Data.ToList();
+            foreach (Book book in booksData)
             {
                 if (CheckIfThisBookIncluded(book, ids))
                 {

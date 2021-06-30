@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TrickyBookStore.Services.Shared
 {
-    public static class SharedService
+    public static class Utils
     {
         public static bool CheckIsFromDate(DateTimeOffset targetDate, DateTimeOffset fromDate)
         {
@@ -16,11 +16,6 @@ namespace TrickyBookStore.Services.Shared
         public static bool CheckIsToDate(DateTimeOffset targetDate, DateTimeOffset toDate)
         {
             return DateTimeOffset.Compare(targetDate, toDate) < 1;
-        }
-
-        public static bool CheckIsRightCustomer(long targetId, long customerId)
-        {
-            return targetId == customerId;
         }
     }
 }

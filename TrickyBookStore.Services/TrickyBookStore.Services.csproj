@@ -32,6 +32,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.Abstractions.5.0.0\lib\net461\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -48,10 +51,13 @@
     <Compile Include="Customers\ICustomerService.cs" />
     <Compile Include="Payment\IPaymentService.cs" />
     <Compile Include="Payment\PaymentService.cs" />
+    <Compile Include="PricingPlan\IPricingPlanService.cs" />
+    <Compile Include="PricingPlan\PricingPlanService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PurchaseTransactions\IPurchaseTransactionService.cs" />
     <Compile Include="PurchaseTransactions\PurchaseTransactionService.cs" />
-    <Compile Include="Shared\SharedService.cs" />
+    <Compile Include="TrickyBookStoreServiceCollection.cs" />
+    <Compile Include="Shared\Utils.cs" />
     <Compile Include="Store\BookCategories.cs" />
     <Compile Include="Store\Books.cs" />
     <Compile Include="Store\Customers.cs" />
@@ -69,6 +75,8 @@
       <Name>TrickyBookStore.Models</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
