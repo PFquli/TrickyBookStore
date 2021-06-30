@@ -15,6 +15,6 @@ namespace TrickyBookStore.Models
         public bool IsOld { get; set; }
         public int CategoryId { get; set; }
 
-        public BookCategory Category { get; set; }
+        public @int Category { get; set; }
     }
 }

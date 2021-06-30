@@ -47,5 +47,33 @@ namespace TrickyBookStore.Services.Subscriptions
         {
             return subscriptions.OrderBy(sub => sub.Priority).ToList();
         }
+
+        public bool CheckIfIdExist(List<int> list, int id)
+        {
+            return list.IndexOf(id) > -1;
+        }
+
+        public IList<int> GetUniqueCategoryIdsFromSubscriptions(List<Subscription> subscriptions)
+        {
+            List<int> categoryIds = new List<int>();
+            foreach (Subscription sub in subscriptions)
+            {
+                if (sub.SubscriptionType == SubscriptionTypes.CategoryAddicted)
+                {
+                    int currentId = (int)sub.BookCategoryId;
+                    if (!CheckIfIdExist(categoryIds, currentId))
+                    {
+                        categoryIds.Add(currentId);
+                    }
+                }
+            }
+            return categoryIds;
+        }
+
+        public double GetReadRateForSubscriptionType(SubscriptionTypes type)
+        {
+            Dictionary<SubscriptionTypes, Dictionary<string, double>> priceDetailsPerType = Store.Subscriptions.PriceDetailsPerType;
+            return priceDetailsPerType[type]["ReadRate"];
+        }
     }
 }

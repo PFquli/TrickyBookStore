@@ -5,7 +5,7 @@ namespace TrickyBookStore.Services.Store
 {
     public static class Subscriptions
     {
-        private static readonly Dictionary<SubscriptionTypes, Dictionary<string, double>> PriceDetailsPerType = new Dictionary<SubscriptionTypes, Dictionary<string, double>>
+        public static readonly Dictionary<SubscriptionTypes, Dictionary<string, double>> PriceDetailsPerType = new Dictionary<SubscriptionTypes, Dictionary<string, double>>
         {
             {
                 SubscriptionTypes.Premium, new Dictionary<string, double>
