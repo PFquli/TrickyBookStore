@@ -32,5 +32,20 @@ namespace TrickyBookStore.Services.Subscriptions
             }
             return subscriptionList;
         }
+
+        public double CalculateSubscriptionsPrice(List<Subscription> subscriptions)
+        {
+            double subscriptionsPrice = 0;
+            foreach (Subscription sub in subscriptions)
+            {
+                subscriptionsPrice += sub.PriceDetails["SubscriptionPrice"];
+            }
+            return subscriptionsPrice;
+        }
+
+        public IList<Subscription> SortSubscriptionsByPriority(List<Subscription> subscriptions)
+        {
+            return subscriptions.OrderBy(sub => sub.Priority).ToList();
+        }
     }
 }

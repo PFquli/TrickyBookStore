@@ -53,19 +53,19 @@ namespace TrickyBookStore.Services.Store
             new Subscription { Id = 2, SubscriptionType = SubscriptionTypes.Free, Priority = 4,
                 PriceDetails = PriceDetailsPerType[SubscriptionTypes.Free]
             },
-            new Subscription { Id = 3, SubscriptionType = SubscriptionTypes.Premium, Priority = 1,
+            new Subscription { Id = 3, SubscriptionType = SubscriptionTypes.Premium, Priority = 2,
                 PriceDetails = PriceDetailsPerType[SubscriptionTypes.Premium]
             },
-            new Subscription { Id = 4, SubscriptionType = SubscriptionTypes.CategoryAddicted, Priority = 2,
+            new Subscription { Id = 4, SubscriptionType = SubscriptionTypes.CategoryAddicted, Priority = 1,
                 PriceDetails = PriceDetailsPerType[SubscriptionTypes.CategoryAddicted],
                 // changable for testing
                 BookCategoryId = 2
             },
-            new Subscription { Id = 5, SubscriptionType = SubscriptionTypes.CategoryAddicted, Priority = 2,
+            new Subscription { Id = 5, SubscriptionType = SubscriptionTypes.CategoryAddicted, Priority = 1,
                 PriceDetails = PriceDetailsPerType[SubscriptionTypes.CategoryAddicted],
                 BookCategoryId = 1
             },
-            new Subscription { Id = 6, SubscriptionType = SubscriptionTypes.CategoryAddicted, Priority = 2,
+            new Subscription { Id = 6, SubscriptionType = SubscriptionTypes.CategoryAddicted, Priority = 1,
                 PriceDetails = PriceDetailsPerType[SubscriptionTypes.CategoryAddicted],
                 BookCategoryId = 3
             }
