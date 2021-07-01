@@ -32,36 +32,35 @@ namespace TrickyBookStore.Services.Payment
             return PricingPlanService.GetPricingPlan(subscriptionIds);
         }
 
-        /// <summary>
-        /// Check if book's category id is inside subscribed category ids
-        /// Apply Category read rate if so, Global read rate otherwise.
-        /// </summary>
-        /// <param name="book">
-        /// Current old book in the transaction list
-        /// </param>
-        /// <param name="pricingPlan">
-        /// Pricing plan for current customer
-        /// </param>
-        /// <returns>
-        /// Payment amount for this old book
-        /// </returns>
-        private double GetPaymentAmountForNewBook(Book book, PricingPlan pricingPlan)
+        private double GetPaymentForNewBookInSubscribedCategories(Book book, PricingPlan pricingPlan)
         {
             double paymentAmount = 0;
-            List<int> subscribedCategoryIds = pricingPlan.UniqueCategoryIds;
             int categoryId = book.CategoryId;
-            if (subscribedCategoryIds.IndexOf(categoryId) > -1)
+            int categoryIndex = pricingPlan.CategoryVouchers.IndexOf(categoryId);
+            if (categoryIndex > -1)
             {
-                //int categoryIndex = pricingPlan.CategoryVouchers.IndexOf(categoryId);
-                //if (categoryIndex > -1)
-                //{
-                //    paymentAmount += pricingPlan.
-                //    pricingPlan.CategoryVouchers.Re
-                //}
+                paymentAmount += pricingPlan.CategoryDiscountRate * book.Price;
+                pricingPlan.CategoryVouchers.RemoveAt(categoryIndex);
             }
             else
             {
-                paymentAmount += pricingPlan.GlobalReadRate * book.Price;
+                paymentAmount += GetPaymentForNewBookInOtherCategories(book, pricingPlan);
+            }
+            return paymentAmount;
+        }
+
+        private double GetPaymentForNewBookInOtherCategories(Book book, PricingPlan pricingPlan)
+        {
+            double paymentAmount = 0;
+            if (pricingPlan.SortedGlobalVouchers.Count > 0)
+            {
+                double discountRate = pricingPlan.SortedGlobalVouchers[0];
+                paymentAmount += discountRate * book.Price;
+                pricingPlan.SortedGlobalVouchers.RemoveAt(0);
+            }
+            else
+            {
+                paymentAmount += pricingPlan.FullPriceRate * book.Price;
             }
             return paymentAmount;
         }
@@ -79,7 +78,36 @@ namespace TrickyBookStore.Services.Payment
         /// <returns>
         /// Payment amount for this old book
         /// </returns>
-        private double GetPaymentAmountForOldBook(Book book, PricingPlan pricingPlan)
+        private double GetPaymentForNewBook(Book book, PricingPlan pricingPlan)
+        {
+            double paymentAmount = 0;
+            List<int> subscribedCategoryIds = pricingPlan.UniqueCategoryIds;
+            int categoryId = book.CategoryId;
+            if (subscribedCategoryIds.IndexOf(categoryId) > -1)
+            {
+                paymentAmount += GetPaymentForNewBookInSubscribedCategories(book, pricingPlan);
+            }
+            else
+            {
+                paymentAmount += GetPaymentForNewBookInOtherCategories(book, pricingPlan);
+            }
+            return paymentAmount;
+        }
+
+        /// <summary>
+        /// Check if book's category id is inside subscribed category ids
+        /// Apply Category read rate if so, Global read rate otherwise.
+        /// </summary>
+        /// <param name="book">
+        /// Current old book in the transaction list
+        /// </param>
+        /// <param name="pricingPlan">
+        /// Pricing plan for current customer
+        /// </param>
+        /// <returns>
+        /// Payment amount for this old book
+        /// </returns>
+        private double GetPaymentForOldBook(Book book, PricingPlan pricingPlan)
         {
             double paymentAmount = 0;
             List<int> subscribedCategoryIds = pricingPlan.UniqueCategoryIds;
@@ -108,11 +136,11 @@ namespace TrickyBookStore.Services.Payment
             {
                 if (book.IsOld)
                 {
-                    paymentAmount += GetPaymentAmountForOldBook(book, pricingPlan);
+                    paymentAmount += GetPaymentForOldBook(book, pricingPlan);
                 }
                 else
                 {
-                    paymentAmount += GetPaymentAmountForNewBook(book, pricingPlan);
+                    paymentAmount += GetPaymentForNewBook(book, pricingPlan);
                 }
             }
             return paymentAmount;
