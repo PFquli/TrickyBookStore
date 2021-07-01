@@ -66,6 +66,14 @@ namespace TrickyBookStore.Services.PricingPlan
                     select sub).ToList();
         }
 
+        public List<Subscription> GetCategorySubscriptions(int[] ids)
+        {
+            List<Subscription> subscriptions = Subscription.GetSubscriptions(ids).ToList();
+            return (from sub in subscriptions
+                    where sub.SubscriptionType == SubscriptionTypes.CategoryAddicted
+                    select sub).ToList();
+        }
+
         /// <summary>
         /// Return read rate of higest order if any, else return read rate of Free account.
         /// </summary>
@@ -109,6 +117,11 @@ namespace TrickyBookStore.Services.PricingPlan
                 }
             }
             return sortedGlobalVouchers;
+        }
+
+        public List<int> GetCategoryVouchers(int[] ids)
+        {
+            List<Subscription>
         }
 
         public Dictionary<string, Dictionary<string, double>> GetPricingPlan(params int[] ids)
