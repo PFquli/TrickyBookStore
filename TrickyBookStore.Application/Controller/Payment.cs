@@ -68,6 +68,8 @@ namespace TrickyBookStore.Application.Controller
         {
             // Todo: setup UI here
             // Writeline, Readline, call GetCustomerBillForSpecificMonth and return result
+            Console.WriteLine("Hello there");
+            Console.WriteLine($"This is the example output for customer 1 on January 2018: {GetCustomerBillForSpecificMonth(2018, 1, 1)}");
         }
     }
 }

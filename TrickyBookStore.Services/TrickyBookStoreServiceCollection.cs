@@ -8,7 +8,7 @@ using TrickyBookStore.Services.Books;
 using TrickyBookStore.Services.Customers;
 using TrickyBookStore.Services.PurchaseTransactions;
 using TrickyBookStore.Services.Subscriptions;
-using TrickyBookStore.Services.PricingPlan;
+using TrickyBookStore.Services.PricingPlans;
 using TrickyBookStore.Services.Payment;
 
 namespace Microsoft.Extensions.DependencyInjection

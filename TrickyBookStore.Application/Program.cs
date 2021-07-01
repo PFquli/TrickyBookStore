@@ -22,17 +22,14 @@ namespace TrickyBookStore.Application
             var loggerFactoryService = serviceProvider.GetService<ILoggerFactory>();
             loggerFactoryService = LoggerFactory.Create(builder => builder.AddConsole());
 
-            // Writeline debug, move to Payment.StartProgram later
-            var books = serviceProvider.GetService<IBookService>();
-            var listOfBooks = books.GetBooks();
-            Console.WriteLine("Bellow is a list of books");
-            Console.WriteLine(listOfBooks[0].Price);
-
             var logger = loggerFactoryService
                 .CreateLogger<Program>();
             logger.LogDebug("Starting application");
 
+            var payment = serviceProvider.GetService<IPayment>();
+
             //Do thing here
+            payment.StartProgram();
         }
     }
 }
