@@ -21,5 +21,7 @@ namespace TrickyBookStore.Models
         public double FullPriceRate { get; set; }
 
         public double CategoryDiscountRate { get; set; }
+
+        public double SubscriptionsPrice { get; set; }
     }
 }

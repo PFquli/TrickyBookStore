@@ -127,6 +127,12 @@ namespace TrickyBookStore.Services.PricingPlans
             return categoryVouchers;
         }
 
+        private double GetSubscriptionPrice(int[] ids)
+        {
+            List<Subscription> subscriptions = Subscription.GetSubscriptions(ids).ToList();
+            return Subscription.CalculateSubscriptionsPrice(subscriptions);
+        }
+
         public PricingPlan GetPricingPlan(params int[] ids)
         {
             PricingPlan pricingPlan = new PricingPlan
@@ -137,7 +143,8 @@ namespace TrickyBookStore.Services.PricingPlans
                 GlobalReadRate = GetGlobalReadRate(ids),
                 SortedGlobalVouchers = GetSortedGlobalVouchers(ids),
                 CategoryDiscountRate = GetCategoryAddictedDiscountRate(),
-                FullPriceRate = FullPriceRateConst
+                FullPriceRate = FullPriceRateConst,
+                SubscriptionsPrice = GetSubscriptionPrice(ids)
             };
             return pricingPlan;
         }

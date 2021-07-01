@@ -143,6 +143,7 @@ namespace TrickyBookStore.Services.Payment
                     paymentAmount += GetPaymentForNewBook(book, pricingPlan);
                 }
             }
+            paymentAmount += pricingPlan.SubscriptionsPrice;
             return paymentAmount;
         }
     }
