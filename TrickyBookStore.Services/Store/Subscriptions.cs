@@ -11,7 +11,7 @@ namespace TrickyBookStore.Services.Store
                 SubscriptionTypes.Premium, new Dictionary<string, double>
                 {
                     { "ReadRate", 0 },
-                    { "DiscountRate", 85 },
+                    { "DiscountRate", 0.85 },
                     { "DiscountQuota", 3 },
                     { "SubscriptionPrice", 200 }
                 }
@@ -20,7 +20,7 @@ namespace TrickyBookStore.Services.Store
                 SubscriptionTypes.CategoryAddicted, new Dictionary<string, double>
                 {
                     { "ReadRate", 0 },
-                    { "DiscountRate", 85 },
+                    { "DiscountRate", 0.85 },
                     { "DiscountQuota", 3 },
                     { "SubscriptionPrice", 75 }
                 }
@@ -28,8 +28,8 @@ namespace TrickyBookStore.Services.Store
             {
                 SubscriptionTypes.Paid, new Dictionary<string, double>
                 {
-                    { "ReadRate", 5 },
-                    { "DiscountRate", 95 },
+                    { "ReadRate", 0.05 },
+                    { "DiscountRate", 0.95 },
                     { "DiscountQuota", 3 },
                     { "SubscriptionPrice", 50 }
                 }
@@ -37,8 +37,8 @@ namespace TrickyBookStore.Services.Store
             {
                 SubscriptionTypes.Free, new Dictionary<string, double>
                 {
-                    { "ReadRate", 90 },
-                    { "DiscountRate", 100 },
+                    { "ReadRate", 0.9 },
+                    { "DiscountRate", 1 },
                     { "DiscountQuota", 0 },
                     { "SubscriptionPrice", 0 }
                 }
