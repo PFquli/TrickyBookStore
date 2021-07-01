@@ -12,7 +12,7 @@ namespace TrickyBookStore.Services.Store
                 {
                     { "ReadRate", 0 },
                     { "DiscountRate", 85 },
-                    { "DiscountedBooksQuota", 3 },
+                    { "DiscountQuota", 3 },
                     { "SubscriptionPrice", 200 }
                 }
             },
@@ -21,7 +21,7 @@ namespace TrickyBookStore.Services.Store
                 {
                     { "ReadRate", 0 },
                     { "DiscountRate", 85 },
-                    { "DiscountedBooksQuota", 3 },
+                    { "DiscountQuota", 3 },
                     { "SubscriptionPrice", 75 }
                 }
             },
@@ -30,7 +30,7 @@ namespace TrickyBookStore.Services.Store
                 {
                     { "ReadRate", 5 },
                     { "DiscountRate", 95 },
-                    { "DiscountedBooksQuota", 3 },
+                    { "DiscountQuota", 3 },
                     { "SubscriptionPrice", 50 }
                 }
             },
@@ -39,7 +39,7 @@ namespace TrickyBookStore.Services.Store
                 {
                     { "ReadRate", 90 },
                     { "DiscountRate", 100 },
-                    { "DiscountedBooksQuota", 0 },
+                    { "DiscountQuota", 0 },
                     { "SubscriptionPrice", 0 }
                 }
             }
