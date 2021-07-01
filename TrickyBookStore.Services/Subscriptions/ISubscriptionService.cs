@@ -13,6 +13,6 @@ namespace TrickyBookStore.Services.Subscriptions
 
         IList<int> GetUniqueCategoryIdsFromSubscriptions(List<Subscription> subscriptions);
 
-        double GetReadRateForSubscriptionType(SubscriptionTypes type);
+        double GetPriceDetailForSubscriptionType(SubscriptionTypes type, string detail);
     }
 }

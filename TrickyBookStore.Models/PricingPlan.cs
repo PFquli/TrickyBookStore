@@ -18,6 +18,8 @@ namespace TrickyBookStore.Models
 
         public double CategoryReadRate { get; set; }
 
-        public double FullPriceRate => 100;
+        public double FullPriceRate { get; set; }
+
+        public double CategoryDiscountRate { get; set; }
     }
 }

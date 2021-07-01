@@ -68,10 +68,10 @@ namespace TrickyBookStore.Services.Subscriptions
             return categoryIds;
         }
 
-        public double GetReadRateForSubscriptionType(SubscriptionTypes type)
+        public double GetPriceDetailForSubscriptionType(SubscriptionTypes type, string detail)
         {
             Dictionary<SubscriptionTypes, Dictionary<string, double>> priceDetailsPerType = Store.Subscriptions.PriceDetailsPerType;
-            return priceDetailsPerType[type]["ReadRate"];
+            return priceDetailsPerType[type][detail];
         }
     }
 }

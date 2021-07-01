@@ -18,6 +18,8 @@ namespace TrickyBookStore.Services.PricingPlans
 
         private string DiscountQuotaKey => "DiscountQuota";
 
+        private double FullPriceRateConst => 1;
+
         public PricingPlanService(ISubscriptionService subscription)
         {
             Subscription = subscription;
@@ -31,7 +33,12 @@ namespace TrickyBookStore.Services.PricingPlans
 
         private double GetCategoryAddictedReadRate()
         {
-            return Subscription.GetReadRateForSubscriptionType(SubscriptionTypes.CategoryAddicted);
+            return Subscription.GetPriceDetailForSubscriptionType(SubscriptionTypes.CategoryAddicted, ReadRateKey);
+        }
+
+        private double GetCategoryAddictedDiscountRate()
+        {
+            return Subscription.GetPriceDetailForSubscriptionType(SubscriptionTypes.CategoryAddicted, DiscountRateKey);
         }
 
         /// <summary>
@@ -72,7 +79,7 @@ namespace TrickyBookStore.Services.PricingPlans
         private double GetGlobalReadRate(int[] ids)
         {
             List<Subscription> sortedNonCategorySubscriptions = GetSortedNonCategorySubscriptions(ids);
-            double globalReadRate = Subscription.GetReadRateForSubscriptionType(SubscriptionTypes.Free);
+            double globalReadRate = Subscription.GetPriceDetailForSubscriptionType(SubscriptionTypes.Free, ReadRateKey);
             if (sortedNonCategorySubscriptions.Count() > 0)
             {
                 globalReadRate = sortedNonCategorySubscriptions.First().PriceDetails[ReadRateKey];
@@ -128,7 +135,9 @@ namespace TrickyBookStore.Services.PricingPlans
                 CategoryVouchers = GetCategoryVouchers(ids),
                 UniqueCategoryIds = GetUniqueCategoryIds(ids),
                 GlobalReadRate = GetGlobalReadRate(ids),
-                SortedGlobalVouchers = GetSortedGlobalVouchers(ids)
+                SortedGlobalVouchers = GetSortedGlobalVouchers(ids),
+                CategoryDiscountRate = GetCategoryAddictedDiscountRate(),
+                FullPriceRate = FullPriceRateConst
             };
             return pricingPlan;
         }

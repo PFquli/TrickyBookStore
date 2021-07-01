@@ -51,8 +51,8 @@
     <Compile Include="Customers\ICustomerService.cs" />
     <Compile Include="Payment\IPaymentService.cs" />
     <Compile Include="Payment\PaymentService.cs" />
-    <Compile Include="PricingPlan\IPricingPlanService.cs" />
-    <Compile Include="PricingPlan\PricingPlanService.cs" />
+    <Compile Include="PricingPlans\IPricingPlanService.cs" />
+    <Compile Include="PricingPlans\PricingPlanService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PurchaseTransactions\IPurchaseTransactionService.cs" />
     <Compile Include="PurchaseTransactions\PurchaseTransactionService.cs" />
