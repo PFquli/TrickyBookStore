@@ -71,13 +71,38 @@ namespace TrickyBookStore.Application.Controller
             bool retry = true;
             do
             {
+                Console.Clear();
                 Console.WriteLine("Welcome to The Tricky BookStore.");
                 Console.WriteLine("Customer ID please!");
-                customerId = Convert.ToInt32(Console.ReadLine());
+                try
+                {
+                    customerId = Convert.ToInt32(Console.ReadLine());
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Incorrect customer ID. Use default customer ID: 1");
+                    customerId = 1;
+                }
                 Console.WriteLine("Month please!");
-                month = Convert.ToInt32(Console.ReadLine());
+                try
+                {
+                    month = Convert.ToInt32(Console.ReadLine());
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Incorrect month. Use default month: 1");
+                    month = 1;
+                }
                 Console.WriteLine("Year please!");
-                year = Convert.ToInt32(Console.ReadLine());
+                try
+                {
+                    year = Convert.ToInt32(Console.ReadLine());
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Incorrect year. Use default year: 2018");
+                    year = 2018;
+                }
                 Console.WriteLine($"The payment amount for customer {customerId} on {month}/{year}:");
                 double sum = GetCustomerBillForSpecificMonth(year, month, customerId);
                 Console.WriteLine(sum);
