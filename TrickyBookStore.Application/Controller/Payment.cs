@@ -66,10 +66,25 @@ namespace TrickyBookStore.Application.Controller
 
         public void StartProgram()
         {
-            // Todo: setup UI here
-            // Writeline, Readline, call GetCustomerBillForSpecificMonth and return result
-            Console.WriteLine("Hello there");
-            Console.WriteLine($"This is the example output for customer 1 on January 2018: {GetCustomerBillForSpecificMonth(2018, 1, 1)}");
+            int month, year;
+            long customerId;
+            bool retry = true;
+            do
+            {
+                Console.WriteLine("Welcome to The Tricky BookStore.");
+                Console.WriteLine("Customer ID please!");
+                customerId = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("Month please!");
+                month = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("Year please!");
+                year = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine($"The payment amount for customer {customerId} on {month}/{year}:");
+                double sum = GetCustomerBillForSpecificMonth(year, month, customerId);
+                Console.WriteLine(sum);
+                Console.WriteLine("Press r to rerun!");
+                retry = Console.ReadLine() == "r";
+            }
+            while (retry);
         }
     }
 }

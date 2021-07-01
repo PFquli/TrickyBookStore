@@ -143,6 +143,7 @@ namespace TrickyBookStore.Services.Payment
                     paymentAmount += GetPaymentForNewBook(book, pricingPlan);
                 }
             }
+            // Todo: add subscription fees before return
             return paymentAmount;
         }
     }
