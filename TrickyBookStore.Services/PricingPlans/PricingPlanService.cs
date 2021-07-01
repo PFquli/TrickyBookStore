@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using TrickyBookStore.Models;
 using TrickyBookStore.Services.Subscriptions;
 
-namespace TrickyBookStore.Services.PricingPlan
+namespace TrickyBookStore.Services.PricingPlans
 {
     internal class PricingPlanService : IPricingPlanService
     {
@@ -18,32 +18,18 @@ namespace TrickyBookStore.Services.PricingPlan
 
         private string DiscountQuotaKey => "DiscountQuota";
 
-        private List<int> CategoryVouchers { get; set; }
-
-        private List<double> SortedGlobalVouchers { get; set; }
-
-        private List<int> UniqueCategoryIds { get; set; }
-
-        private double GlobalReadRate { get; set; }
-
-        private double CategoryReadRate { get; set; }
-
-        private double FullPriceRate { get; set; }
-
         public PricingPlanService(ISubscriptionService subscription)
         {
             Subscription = subscription;
-            CategoryReadRate = GetCategoryAddictedReadRate();
-            FullPriceRate = 100;
         }
 
-        public List<int> GetUniqueCategoryIds(params int[] ids)
+        private List<int> GetUniqueCategoryIds(params int[] ids)
         {
             List<Subscription> subscriptions = Subscription.GetSubscriptions(ids).ToList();
             return Subscription.GetUniqueCategoryIdsFromSubscriptions(subscriptions).ToList();
         }
 
-        public double GetCategoryAddictedReadRate()
+        private double GetCategoryAddictedReadRate()
         {
             return Subscription.GetReadRateForSubscriptionType(SubscriptionTypes.CategoryAddicted);
         }
@@ -57,7 +43,7 @@ namespace TrickyBookStore.Services.PricingPlan
         /// <returns>
         /// sorted non-category subscriptions
         /// </returns>
-        public List<Subscription> GetSortedNonCategorySubscriptions(int[] ids)
+        private List<Subscription> GetSortedNonCategorySubscriptions(int[] ids)
         {
             List<Subscription> subscriptions = Subscription.GetSubscriptions(ids).ToList();
             return (from sub in subscriptions
@@ -66,7 +52,7 @@ namespace TrickyBookStore.Services.PricingPlan
                     select sub).ToList();
         }
 
-        public List<Subscription> GetCategorySubscriptions(int[] ids)
+        private List<Subscription> GetCategorySubscriptions(int[] ids)
         {
             List<Subscription> subscriptions = Subscription.GetSubscriptions(ids).ToList();
             return (from sub in subscriptions
@@ -83,7 +69,7 @@ namespace TrickyBookStore.Services.PricingPlan
         /// <returns>
         /// double: global read rate
         /// </returns>
-        public double GetGlobalReadRate(int[] ids)
+        private double GetGlobalReadRate(int[] ids)
         {
             List<Subscription> sortedNonCategorySubscriptions = GetSortedNonCategorySubscriptions(ids);
             double globalReadRate = Subscription.GetReadRateForSubscriptionType(SubscriptionTypes.Free);
@@ -104,7 +90,7 @@ namespace TrickyBookStore.Services.PricingPlan
         /// <returns>
         /// List of global voucher (discount rates that can applied everywhere)
         /// </returns>
-        public List<double> GetSortedGlobalVouchers(int[] ids)
+        private List<double> GetSortedGlobalVouchers(int[] ids)
         {
             List<double> sortedGlobalVouchers = new List<double>();
             List<Subscription> sortedNonCategorySubscriptions = GetSortedNonCategorySubscriptions(ids);
@@ -113,22 +99,38 @@ namespace TrickyBookStore.Services.PricingPlan
                 double discountQuota = sub.PriceDetails[DiscountQuotaKey];
                 for (int i = 1; i <= discountQuota; i++)
                 {
-                    sortedGlobalVouchers.Add(sub.PriceDetails["DiscountRate"]);
+                    sortedGlobalVouchers.Add(sub.PriceDetails[DiscountRateKey]);
                 }
             }
             return sortedGlobalVouchers;
         }
 
-        public List<int> GetCategoryVouchers(int[] ids)
+        private List<int> GetCategoryVouchers(int[] ids)
         {
-            List<Subscription>
+            List<int> categoryVouchers = new List<int>();
+            List<Subscription> categorySubscriptions = GetCategorySubscriptions(ids);
+            foreach (Subscription sub in categorySubscriptions)
+            {
+                double discountQuota = sub.PriceDetails[DiscountQuotaKey];
+                for (int i = 1; i <= discountQuota; i++)
+                {
+                    categoryVouchers.Add((int)sub.BookCategoryId);
+                }
+            }
+            return categoryVouchers;
         }
 
-        public Dictionary<string, Dictionary<string, double>> GetPricingPlan(params int[] ids)
+        public PricingPlan GetPricingPlan(params int[] ids)
         {
-            UniqueCategoryIds = GetUniqueCategoryIds(ids);
-            GlobalReadRate = GetGlobalReadRate(ids);
-            throw new NotImplementedException();
+            PricingPlan pricingPlan = new PricingPlan
+            {
+                CategoryReadRate = GetCategoryAddictedReadRate(),
+                CategoryVouchers = GetCategoryVouchers(ids),
+                UniqueCategoryIds = GetUniqueCategoryIds(ids),
+                GlobalReadRate = GetGlobalReadRate(ids),
+                SortedGlobalVouchers = GetSortedGlobalVouchers(ids)
+            };
+            return pricingPlan;
         }
     }
 }

@@ -5,10 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using TrickyBookStore.Models;
 
-namespace TrickyBookStore.Services.PricingPlan
+namespace TrickyBookStore.Services.PricingPlans
 {
     public interface IPricingPlanService
     {
-        Dictionary<string, Dictionary<string, double>> GetPricingPlan(params int[] ids);
+        PricingPlan GetPricingPlan(params int[] ids);
     }
 }
