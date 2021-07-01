@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TrickyBookStore.Services.Payment;
 
 namespace TrickyBookStore.Application.Controller
@@ -68,7 +64,7 @@ namespace TrickyBookStore.Application.Controller
         {
             int month, year;
             long customerId;
-            bool retry = true;
+            bool rerun = true;
             do
             {
                 Console.Clear();
@@ -107,9 +103,9 @@ namespace TrickyBookStore.Application.Controller
                 double sum = GetCustomerBillForSpecificMonth(year, month, customerId);
                 Console.WriteLine(sum);
                 Console.WriteLine("Press r to rerun!");
-                retry = Console.ReadLine() == "r";
+                rerun = Console.ReadLine() == "r";
             }
-            while (retry);
+            while (rerun);
         }
     }
 }

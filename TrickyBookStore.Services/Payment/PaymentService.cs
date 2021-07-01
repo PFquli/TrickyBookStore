@@ -1,11 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using TrickyBookStore.Models;
 using TrickyBookStore.Services.Books;
 using TrickyBookStore.Services.Customers;
-using TrickyBookStore.Services.PurchaseTransactions;
 using TrickyBookStore.Services.PricingPlans;
-using TrickyBookStore.Models;
-using System.Collections.Generic;
+using TrickyBookStore.Services.PurchaseTransactions;
 
 namespace TrickyBookStore.Services.Payment
 {
@@ -13,8 +13,8 @@ namespace TrickyBookStore.Services.Payment
     {
         private ICustomerService CustomerService { get; }
         private IPurchaseTransactionService PurchaseTransactionService { get; }
-        public IPricingPlanService PricingPlanService { get; }
-        public IBookService BookService { get; }
+        private IPricingPlanService PricingPlanService { get; }
+        private IBookService BookService { get; }
 
         public PaymentService(ICustomerService customerService,
             IPurchaseTransactionService purchaseTransactionService, IPricingPlanService pricingPlanService, IBookService bookService)

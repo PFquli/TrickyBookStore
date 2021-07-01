@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TrickyBookStore.Models;
 using TrickyBookStore.Services.Subscriptions;
 
@@ -10,7 +7,7 @@ namespace TrickyBookStore.Services.PricingPlans
 {
     internal class PricingPlanService : IPricingPlanService
     {
-        public ISubscriptionService Subscription { get; }
+        private ISubscriptionService Subscription { get; }
 
         private string ReadRateKey => "ReadRate";
 

@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using TrickyBookStore.Models;
-using TrickyBookStore.Services.Store;
 using System.Linq;
+using TrickyBookStore.Models;
 
 namespace TrickyBookStore.Services.Books
 {
